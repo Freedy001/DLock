@@ -105,6 +105,7 @@ public class DistributeLock implements Watcher,
     public void unlock() {
         Thread thread = Thread.currentThread();
         if (lockThread == thread) {
+            lockThread=null;
             int state = getState();
             if (state == 0) {
                 String pathName = threadPathMap.get(thread);
